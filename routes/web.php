@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'index']);
+
+// Route::get('/', function () {
+
+//     $productRepository = new ProductRepository();
+//     $productCache = new ProductCache();
+
+//     $products = $productCache->getCachedProducts();
+
+//     if (!$products) {
+//         // If not cached, fetch from the repository and cache it
+//         $products = $productRepository->getAllProducts();
+//         $productCache->cacheProducts($products);
+//     }
+
+//     return view('welcome', ['products' => $products]);
+// });
